@@ -1,0 +1,43 @@
+﻿Build started 2014-06-12 14:54:21.
+     1>Project "C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\BattleSnake\BattleSnake.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Board.cpp BoardObject.cpp BoardObjectFactory.cpp Collectible.cpp Enemy.cpp Game.cpp Main.cpp Snake.cpp SnakeElement.cpp
+         Board.cpp
+     1>c:\users\blady\documents\visual studio 2013\projects\battlesnake\battlesnake\board.cpp(263): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Generating Code...
+         Compiling...
+         SnakeElement.cpp
+     1>c:\users\blady\documents\visual studio 2013\projects\battlesnake\battlesnake\snakeelement.cpp(25): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Snake.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Enemy.cpp
+         Collectible.cpp
+         BoardObjectFactory.cpp
+         BoardObject.cpp
+         Main.cpp
+         Game.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\Debug\BattleSnake.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\Debug\BattleSnake.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\Debug\BattleSnake.lib" /MACHINE:X86 Debug\Board.obj
+         Debug\BoardObject.obj
+         Debug\BoardObjectFactory.obj
+         Debug\Button.obj
+         Debug\Collectible.obj
+         Debug\ControlManager.obj
+         Debug\Enemy.obj
+         Debug\Game.obj
+         Debug\GameState.obj
+         Debug\Main.obj
+         Debug\Menu.obj
+         Debug\Points.obj
+         Debug\Projectile.obj
+         Debug\Snake.obj
+         Debug\SnakeElement.obj
+         Debug\VisibleObject.obj
+         Debug\VOManager.obj
+         BattleSnake.vcxproj -> C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\Debug\BattleSnake.exe
+     1>Done Building Project "C:\Users\Blady\Documents\Visual Studio 2013\Projects\BattleSnake\BattleSnake\BattleSnake.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.90
