@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TheRAKDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dzieci">
+    <Key>
+      <PropertyRef Name="IDDziecka" />
+    </Key>
+    <Property Name="IDDziecka" Type="int" Nullable="false" />
+    <Property Name="IDKlienta" Type="int" />
+    <Property Name="Imie" Type="nchar" MaxLength="50" />
+    <Property Name="Nazwisko" Type="nchar" MaxLength="50" />
+    <Property Name="Plec" Type="nchar" MaxLength="10" />
+    <Property Name="SredniaOcena" Type="int" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="IDKlienta" />
+    </Key>
+    <Property Name="IDKlienta" Type="int" Nullable="false" />
+    <Property Name="DataUrodzenia" Type="datetime" />
+    <Property Name="Haslo" Type="nchar" MaxLength="10" />
+    <Property Name="Login" Type="nchar" MaxLength="10" />
+    <Property Name="Imie" Type="nchar" MaxLength="30" />
+    <Property Name="Nazwisko" Type="nchar" MaxLength="50" />
+    <Property Name="NrDowodu" Type="int" />
+  </EntityType>
+  <EntityType Name="KlienciLokujacy">
+    <Key>
+      <PropertyRef Name="IDKlienta" />
+    </Key>
+    <Property Name="IDKlienta" Type="int" Nullable="false" />
+    <Property Name="Miejscowosc" Type="nchar" MaxLength="50" />
+    <Property Name="Ulica" Type="nchar" MaxLength="50" />
+    <Property Name="NrDomu" Type="int" />
+    <Property Name="NrKonta" Type="int" />
+  </EntityType>
+  <EntityType Name="KlienciPodejmujacy">
+    <Key>
+      <PropertyRef Name="IDKlienta" />
+    </Key>
+    <Property Name="IDKlienta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Komunikaty">
+    <Key>
+      <PropertyRef Name="IDKomunikatu" />
+    </Key>
+    <Property Name="IDKomunikatu" Type="int" Nullable="false" />
+    <Property Name="IDKlienta" Type="int" Nullable="false" />
+    <Property Name="IDSuperniani" Type="int" Nullable="false" />
+    <Property Name="Tresc" Type="text" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nianie">
+    <Key>
+      <PropertyRef Name="IDNiani" />
+    </Key>
+    <Property Name="IDNiani" Type="int" Nullable="false" />
+    <Property Name="IDSuperniani" Type="int" />
+    <Property Name="Imie" Type="nchar" MaxLength="50" />
+    <Property Name="Nazwisko" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ogledziny">
+    <Key>
+      <PropertyRef Name="IDOgledzin" />
+    </Key>
+    <Property Name="IDOgledzin" Type="int" Nullable="false" />
+    <Property Name="IDWypozyczenia" Type="int" />
+    <Property Name="IDNiani" Type="int" />
+    <Property Name="Data" Type="date" />
+    <Property Name="NazwiskoLekarza" Type="nchar" MaxLength="50" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="Rezultat" Type="text" />
+  </EntityType>
+  <EntityType Name="Supernianie">
+    <Key>
+      <PropertyRef Name="IDSuperniani" />
+    </Key>
+    <Property Name="IDSuperniani" Type="int" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="50" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Wypozyczenia">
+    <Key>
+      <PropertyRef Name="IDWypozyczenia" />
+    </Key>
+    <Property Name="IDWypozyczenia" Type="int" Nullable="false" />
+    <Property Name="IDDziecka" Type="int" />
+    <Property Name="IDKlientaPodejmujacego" Type="int" />
+    <Property Name="Data" Type="date" />
+    <Property Name="Komentarz" Type="text" />
+    <Property Name="Godziny" Type="int" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Dzieci_KlienciLokujacy">
+    <End Role="KlienciLokujacy" Type="Self.KlienciLokujacy" Multiplicity="0..1" />
+    <End Role="Dzieci" Type="Self.Dzieci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KlienciLokujacy">
+        <PropertyRef Name="IDKlienta" />
+      </Principal>
+      <Dependent Role="Dzieci">
+        <PropertyRef Name="IDKlienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KlienciLokujacy_Klienci">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="KlienciLokujacy" Type="Self.KlienciLokujacy" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="IDKlienta" />
+      </Principal>
+      <Dependent Role="KlienciLokujacy">
+        <PropertyRef Name="IDKlienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KlienciPodejmujacy_Klienci">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="KlienciPodejmujacy" Type="Self.KlienciPodejmujacy" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="IDKlienta" />
+      </Principal>
+      <Dependent Role="KlienciPodejmujacy">
+        <PropertyRef Name="IDKlienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Komunikaty_Klienci">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Komunikaty" Type="Self.Komunikaty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="IDKlienta" />
+      </Principal>
+      <Dependent Role="Komunikaty">
+        <PropertyRef Name="IDKlienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Komunikaty_Supernianie">
+    <End Role="Supernianie" Type="Self.Supernianie" Multiplicity="1" />
+    <End Role="Komunikaty" Type="Self.Komunikaty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supernianie">
+        <PropertyRef Name="IDSuperniani" />
+      </Principal>
+      <Dependent Role="Komunikaty">
+        <PropertyRef Name="IDSuperniani" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nianie_Supernianie">
+    <End Role="Supernianie" Type="Self.Supernianie" Multiplicity="0..1" />
+    <End Role="Nianie" Type="Self.Nianie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supernianie">
+        <PropertyRef Name="IDSuperniani" />
+      </Principal>
+      <Dependent Role="Nianie">
+        <PropertyRef Name="IDSuperniani" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogledziny_Nanie">
+    <End Role="Nianie" Type="Self.Nianie" Multiplicity="0..1" />
+    <End Role="Ogledziny" Type="Self.Ogledziny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nianie">
+        <PropertyRef Name="IDNiani" />
+      </Principal>
+      <Dependent Role="Ogledziny">
+        <PropertyRef Name="IDNiani" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogledziny_Wypozyczenia">
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="0..1" />
+    <End Role="Ogledziny" Type="Self.Ogledziny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wypozyczenia">
+        <PropertyRef Name="IDWypozyczenia" />
+      </Principal>
+      <Dependent Role="Ogledziny">
+        <PropertyRef Name="IDWypozyczenia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wypozyczenia_Dzeci">
+    <End Role="Dzieci" Type="Self.Dzieci" Multiplicity="0..1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dzieci">
+        <PropertyRef Name="IDDziecka" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="IDDziecka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wypozyczenia_KlienciPodejmujacy">
+    <End Role="KlienciPodejmujacy" Type="Self.KlienciPodejmujacy" Multiplicity="0..1" />
+    <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KlienciPodejmujacy">
+        <PropertyRef Name="IDKlienta" />
+      </Principal>
+      <Dependent Role="Wypozyczenia">
+        <PropertyRef Name="IDKlientaPodejmujacego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TheRAKDatabaseModelStoreContainer">
+    <EntitySet Name="Dzieci" EntityType="Self.Dzieci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KlienciLokujacy" EntityType="Self.KlienciLokujacy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KlienciPodejmujacy" EntityType="Self.KlienciPodejmujacy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Komunikaty" EntityType="Self.Komunikaty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nianie" EntityType="Self.Nianie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ogledziny" EntityType="Self.Ogledziny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supernianie" EntityType="Self.Supernianie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Dzieci_KlienciLokujacy" Association="Self.FK_Dzieci_KlienciLokujacy">
+      <End Role="KlienciLokujacy" EntitySet="KlienciLokujacy" />
+      <End Role="Dzieci" EntitySet="Dzieci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KlienciLokujacy_Klienci" Association="Self.FK_KlienciLokujacy_Klienci">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="KlienciLokujacy" EntitySet="KlienciLokujacy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KlienciPodejmujacy_Klienci" Association="Self.FK_KlienciPodejmujacy_Klienci">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="KlienciPodejmujacy" EntitySet="KlienciPodejmujacy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Komunikaty_Klienci" Association="Self.FK_Komunikaty_Klienci">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Komunikaty" EntitySet="Komunikaty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Komunikaty_Supernianie" Association="Self.FK_Komunikaty_Supernianie">
+      <End Role="Supernianie" EntitySet="Supernianie" />
+      <End Role="Komunikaty" EntitySet="Komunikaty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nianie_Supernianie" Association="Self.FK_Nianie_Supernianie">
+      <End Role="Supernianie" EntitySet="Supernianie" />
+      <End Role="Nianie" EntitySet="Nianie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogledziny_Nanie" Association="Self.FK_Ogledziny_Nanie">
+      <End Role="Nianie" EntitySet="Nianie" />
+      <End Role="Ogledziny" EntitySet="Ogledziny" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogledziny_Wypozyczenia" Association="Self.FK_Ogledziny_Wypozyczenia">
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+      <End Role="Ogledziny" EntitySet="Ogledziny" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wypozyczenia_Dzeci" Association="Self.FK_Wypozyczenia_Dzeci">
+      <End Role="Dzieci" EntitySet="Dzieci" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wypozyczenia_KlienciPodejmujacy" Association="Self.FK_Wypozyczenia_KlienciPodejmujacy">
+      <End Role="KlienciPodejmujacy" EntitySet="KlienciPodejmujacy" />
+      <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

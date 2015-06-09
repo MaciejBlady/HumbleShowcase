@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TheDatabaseModelStoreContainer" CdmEntityContainer="TheDatabaseEntities1">
+    <EntitySetMapping Name="Dzieci">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Dzieci">
+        <MappingFragment StoreEntitySet="Dzieci">
+          <ScalarProperty Name="IDDziecka" ColumnName="IDDziecka" />
+          <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Plec" ColumnName="Plec" />
+          <ScalarProperty Name="SredniaOcena" ColumnName="SredniaOcena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klienci">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Klienci">
+        <MappingFragment StoreEntitySet="Klienci">
+          <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+          <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+          <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="NrDowodu" ColumnName="NrDowodu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlienciLokujacy">
+      <EntityTypeMapping TypeName="TheDatabaseModel.KlienciLokujacy">
+        <MappingFragment StoreEntitySet="KlienciLokujacy">
+          <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+          <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+          <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+          <ScalarProperty Name="NrDomu" ColumnName="NrDomu" />
+          <ScalarProperty Name="NrKonta" ColumnName="NrKonta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlienciPodejmujacy">
+      <EntityTypeMapping TypeName="TheDatabaseModel.KlienciPodejmujacy">
+        <MappingFragment StoreEntitySet="KlienciPodejmujacy">
+          <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komunikaty">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Komunikaty">
+        <MappingFragment StoreEntitySet="Komunikaty">
+          <ScalarProperty Name="IDKomunikatu" ColumnName="IDKomunikatu" />
+          <ScalarProperty Name="IDKlienta" ColumnName="IDKlienta" />
+          <ScalarProperty Name="IDSuperniani" ColumnName="IDSuperniani" />
+          <ScalarProperty Name="Tresc" ColumnName="Tresc" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nianie">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Nianie">
+        <MappingFragment StoreEntitySet="Nianie">
+          <ScalarProperty Name="IDNiani" ColumnName="IDNiani" />
+          <ScalarProperty Name="IDSuperniani" ColumnName="IDSuperniani" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogledziny">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Ogledziny">
+        <MappingFragment StoreEntitySet="Ogledziny">
+          <ScalarProperty Name="IDOgledzin" ColumnName="IDOgledzin" />
+          <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
+          <ScalarProperty Name="IDNiani" ColumnName="IDNiani" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="NazwiskoLekarza" ColumnName="NazwiskoLekarza" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rezultat" ColumnName="Rezultat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supernianie">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Supernianie">
+        <MappingFragment StoreEntitySet="Supernianie">
+          <ScalarProperty Name="IDSuperniani" ColumnName="IDSuperniani" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wypozyczenia">
+      <EntityTypeMapping TypeName="TheDatabaseModel.Wypozyczenia">
+        <MappingFragment StoreEntitySet="Wypozyczenia">
+          <ScalarProperty Name="IDWypozyczenia" ColumnName="IDWypozyczenia" />
+          <ScalarProperty Name="IDDziecka" ColumnName="IDDziecka" />
+          <ScalarProperty Name="IDKlientaPodejmujacego" ColumnName="IDKlientaPodejmujacego" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Komentarz" ColumnName="Komentarz" />
+          <ScalarProperty Name="Godziny" ColumnName="Godziny" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
